@@ -12,6 +12,16 @@ Installation
     % gem install linda
 
 
+Usage
+-----
+This rubygem provides
+
+* on-memory Tuple/TupleSpace implementation
+* common tests for your Linda implementation, such as using MongoDB or SQL.
+
+[Sinatra::RocketIO::Linda](http://rubygems.org/gems/sinatra-rocketio-linda) is using linda rubygem inside.
+
+
 Contributing
 ------------
 1. Fork it
