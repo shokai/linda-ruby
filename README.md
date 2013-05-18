@@ -1,27 +1,19 @@
-# Linda
+Linda
+=====
+Tuple and TupleSpace implementation of Linda - coordinational language for parallel processing.
 
-TODO: Write a gem description
+* https://github.com/shokai/linda-ruby
+* https://rubygems.org/gems/linda
 
-## Installation
 
-Add this line to your application's Gemfile:
+Installation
+------------
 
-    gem 'linda'
+    % gem install linda
 
-And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install linda
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
+Contributing
+------------
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
