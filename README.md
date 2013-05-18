@@ -60,40 +60,40 @@ Linda::Tuple.new(:a => 1, :b => 2).match?(:a => 1, :b => 5)  # => false
 Tuple/TupleSpace Functions
 --------------------------
 
-### TupleSpace#write( tuple, options={} )
+### TupleSpace#write(tuple, options={})
 
 - write a Tuple into TupleSpace.
 - default : options = {:expire => 300}
   - expire 300(sec) after.
 - similar to `out` function in C-Linda.
 
-### TupleSpace#read( tuple )
+### TupleSpace#read(tuple)
 
 - return a Tuple which matches in TupleSpace. return `nil` if not exists.
 - similar to `rdp` function in C-Linda.
 
 
-### TupleSpace#read( tuple, &callback(tuple) )
+### TupleSpace#read(tuple, &callback(tuple))
 
 - callback a Tuple which matches in TupleSpace. wait until available.
 - async function : it does not return a value.
 - similar to `rd` function in C-Linda.
 
 
-### TupleSpace#take( tuple )
+### TupleSpace#take(tuple)
 
 - delete a Tuple, then return it which matches in TupleSpace. return `nil` if not exists.
 - similar to `inp` function in C-Linda.
 
 
-### TupleSpace#take( tuple, &callback(tuple) )
+### TupleSpace#take(tuple, &callback(tuple))
 
 - delete a Tuple, then callback it which matches in TupleSpace. wait until available.
 - async function : it does not return a value.
 - similar to `in` function in C-Linda.
 
 
-### TupleSpace#watch( tuple, &callback(tuple) )
+### TupleSpace#watch(tuple, &callback(tuple))
 
 - callback Tuples which matches when TupleSpace#write(tuple) is called.
 
