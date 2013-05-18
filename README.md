@@ -14,12 +14,12 @@ Installation
 
 Usage
 -----
-This rubygem provides
+Linda rubygem provides
 
 - on-memory Tuple/TupleSpace implementation
-- common tests for your Linda implementation, such as using MongoDB or SQL
+- common tests for your Linda implementation, such as using KVS or RDB
 
-[Sinatra::RocketIO::Linda](http://rubygems.org/gems/sinatra-rocketio-linda) is using linda rubygem inside.
+[Sinatra::RocketIO::Linda](http://rubygems.org/gems/sinatra-rocketio-linda) is using Linda rubygem inside.
 
 
 Tuple Matching
