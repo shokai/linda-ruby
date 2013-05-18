@@ -3,7 +3,7 @@ module Linda
   class Tuple
     attr_reader :data, :type, :expire_at
     def initialize(data, opts={})
-      unless [Array, Hash].include? data.class
+      unless data.kind_of? Array or data.kind_of? Hash
         raise ArgumentError, 'argument must be instance of Array or Hash'
       end
       @data = data
@@ -14,7 +14,7 @@ module Linda
     end
 
     def match?(target)
-      raise ArgumentError, 'argument must be instance of Tuple' unless target.kind_of? self.class
+      target = self.class.new target unless target.kind_of? self.class
       return false if @type != target.type
       if @type == Array
         return false if @data.length > target.data.length
