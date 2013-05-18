@@ -1,6 +1,6 @@
 Linda
 =====
-Tuple and TupleSpace implementation of Linda - coordinational language for parallel processing.
+Tuple and TupleSpace implementation of Linda
 
 - https://github.com/shokai/linda-ruby
 - https://rubygems.org/gems/linda
@@ -10,6 +10,14 @@ Installation
 ------------
 
     % gem install linda
+
+
+Linda
+-----
+Linda is a coordination launguage for parallel programming.
+
+- http://en.wikipedia.org/wiki/Linda_(coordination_language)
+- http://ja.wikipedia.org/wiki/Linda
 
 
 Usage
