@@ -17,28 +17,37 @@ Usage
 This rubygem provides
 
 - on-memory Tuple/TupleSpace implementation
-- common tests for your Linda implementation, such as using MongoDB or SQL.
+- common tests for your Linda implementation, such as using MongoDB or SQL
 
 [Sinatra::RocketIO::Linda](http://rubygems.org/gems/sinatra-rocketio-linda) is using linda rubygem inside.
 
 
 Tuple Matching
 --------------
-Array Tuple `[1, 2]`
+Array Tuple `[1, 2, 3]`
 
-- matches `[1, 2]`
 - matches `[1, 2, 3]`
-- matches `[1, 2, "a"]`
-- NOT matches `[1, "a"]`
-- NOT matches `[2, 1]`
+- matches `[1, 2, 3, 4]`
+- matches `[1, 2, 3, "a"]`
+- NOT matches `[1, 2, "a"]`
+- NOT matches `[2, 1, 3]`
+
+```ruby
+Linda::Tuple.new([1, 2]).match? [1, 2, 3]  # => true
+Linda::Tuple.new([1, 2]).match? [1, "a"]   # => false
+```
 
 Hash Tuple {:a => 1, :b => 2}
 
 - matches `{:a => 1, :b => 2}`
 - matches `{:a => 1, :b => 2, :c => 3}`
-- matches `{:a => 1, :b => 2, :user => "shokai"}`
+- matches `{:a => 1, :b => 2, :name => "shokai"}`
 - NOT matches `{:a => 1, :b => 5}`
 
+```ruby
+Linda::Tuple.new(:a => 1, :b => 2).match?(:a => 1, :b => 2, :name => "shokai")  # => true
+Linda::Tuple.new(:a => 1, :b => 2).match?(:a => 1, :b => 5)  # => false
+```
 
 Tuple/TupleSpace Functions
 --------------------------
