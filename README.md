@@ -98,8 +98,79 @@ Tuple/TupleSpace Functions
 - callback Tuples which matches when TupleSpace#write(tuple) is called.
 
 
+Test your Linda implementation
+------------------------------
+
+with [minitest](https://github.com/seattlerb/minitest).
+
+### Test Tuple
+
+`test/test_tuple.rb`
+```ruby
+require 'rubygems'
+require 'minitest/autorun'
+require 'linda/test/tuple'
+require 'path/to/my/linda/tuple'  # load your Tuple class
+
+class TestMyTuple < MiniTest::Test
+  include Linda::Test::Tuple      # mix-in test code
+
+  def target_tuple
+    My::Linda::Tuple              # set your Tuple class name
+  end
+end
+```
+
+    % ruby test/test_tuple.rb
+
+
+### Test TupleSpace
+
+`test/test_tuplespace.rb`
+```ruby
+require 'rubygems'
+require 'minitest/autorun'
+require 'linda/test/tuplespace'
+require 'path/to/my/linda/tuple'       # load your Tuple class
+require 'path/to/my/linda/tuplespace'  # load your TupleSpace class
+
+class TestMyTupleSpace < MiniTest::Test
+  include Linda::Test::TupleSpace      # mix-in test code
+
+  def target_tuple
+    My::Linda::Tuple                   # set your Tuple class name
+  end
+
+  def target_tuplespace
+    My::Linda::TupleSpace              # set your TupleSpace class name
+  end
+end
+```
+
+    % ruby test/test_tuplespace.rb
+
+
+### Rake
+
+`Rakefile`
+```ruby
+require "rake/testtask"
+
+Rake::TestTask.new do |t|
+  t.pattern = "test/test_*.rb"
+end
+
+task :default => :test
+```
+
+    % rake test
+
+=> run all tests
+
+
 Test
 ----
+test this gem
 
     % gem install bundler
     % bundle install
