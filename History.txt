@@ -1,3 +1,9 @@
+=== 0.0.2 2013-05-19
+
+* provide tests
+  * Linda::Test::Tuple
+  * Linda::Test::TupleSpace
+
 === 0.0.1 2013-05-18
 
 * implements tuple and tuplespace / tests
