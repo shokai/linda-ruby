@@ -2,16 +2,18 @@ module Linda
   module Test
     module Tuple
 
-      def test_array
-        tuple = target_tuple.new([1,2,3])
-        assert_equal tuple.data, [1,2,3]
+      def test_array_tuple
+        tuple = target_tuple.new([1,2,:a])
+        assert_equal tuple.data, [1,2,:a]
         assert_equal tuple.type, Array
+        assert_equal JSON.parse(tuple.to_json), [1,2,"a"]
       end
 
-      def test_hash
+      def test_hash_tuple
         tuple = target_tuple.new(:a => 1, :b => 2)
         assert_equal tuple.data, {:a => 1, :b => 2}
         assert_equal tuple.type, Hash
+        assert_equal JSON.parse(tuple.to_json), {"a" => 1, "b" => 2}
       end
 
       def test_match_array_tuple

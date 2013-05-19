@@ -1,3 +1,5 @@
+require "json"
+
 module Linda
 
   class Tuple
@@ -34,6 +36,11 @@ module Linda
     def to_s
       @data.to_s
     end
+
+    def to_json(*a)
+      @data.to_json(*a)
+    end
+
   end
 
 end
