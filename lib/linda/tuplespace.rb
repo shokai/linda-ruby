@@ -2,7 +2,7 @@ module Linda
 
   class TupleSpace
     include Enumerable
-    attr_reader :name
+    attr_reader :name, :tuples
 
     def initialize(name="__default__")
       @name = name

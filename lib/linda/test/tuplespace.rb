@@ -6,6 +6,20 @@ module Linda
         @space = target_tuplespace.new
       end
 
+      def test_name
+        assert_equal @space.name, "__default__"
+        assert_equal target_tuplespace.new("foo").name, "foo"
+      end
+
+      def test_tuples
+        @space.write [1]
+        @space.write [1,2]
+        @space.write :a => 10, :b => 20
+        @space.write [1,2,"a"]
+        assert_equal @space.size, 4
+        assert_equal @space.tuples.size, 4
+      end
+
       def test_write_read
         assert_equal @space.size, 0
         @space.write target_tuple.new [1,2,3]
