@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    linda (0.0.3)
+    linda (0.0.4)
       json
 
 GEM
   remote: https://rubygems.org/
   specs:
     json (1.8.0)
-    minitest (5.0.1)
+    minitest (5.0.3)
     rake (10.0.4)
 
 PLATFORMS
