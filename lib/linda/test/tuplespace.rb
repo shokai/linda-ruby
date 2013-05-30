@@ -147,34 +147,34 @@ module Linda
         _tuple1 = nil
         _tuple2 = nil
         callback_id1 = @space.read [1,2] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         callback_id2 = @space.read [1,2] do |tuple|
-          _tuple2 = tuple
+          _tuple2 = tuple.data
         end
         @space.cancel callback_id1
         @space.write [1,2,3]
         sleep 1
         assert_equal _tuple1, nil
         assert_equal _tuple2, [1,2,3]
-        assert_not_equal callback_id1, callback_id2
+        assert callback_id1 != callback_id2
       end
 
       def test_cancel_take
         _tuple1 = nil
         _tuple2 = nil
         callback_id1 = @space.take [1,2] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         callback_id2 = @space.take [1,2] do |tuple|
-          _tuple2 = tuple
+          _tuple2 = tuple.data
         end
         @space.cancel callback_id1
         @space.write [1,2,3]
         sleep 1
         assert_equal _tuple1, nil
         assert_equal _tuple2, [1,2,3]
-        assert_not_equal callback_id1, callback_id2
+        assert callback_id1 != callback_id2
       end
 
 
@@ -182,10 +182,10 @@ module Linda
         _tuple1 = nil
         _tuple2 = nil
         callback_id1 = @space.watch [1,2] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         callback_id2 = @space.watch [1,2] do |tuple|
-          _tuple2 = tuple
+          _tuple2 = tuple.data
         end
         @space.write [1,2,3]
         @space.cancel callback_id1
@@ -193,7 +193,7 @@ module Linda
         sleep 1
         assert_equal _tuple1, [1,2,3]
         assert_equal _tuple2, [1,2,3,4]
-        assert_not_equal callback_id1, callback_id2
+        assert callback_id1 != callback_id2
       end
 
     end
