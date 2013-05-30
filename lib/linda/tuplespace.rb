@@ -16,7 +16,7 @@ module Linda
       end
     end
 
-    def remove_callback(callback)
+    def cancel(callback)
       @callbacks.delete callback
     end
 
