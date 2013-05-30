@@ -37,24 +37,24 @@ module Linda
         assert_equal @space.size, 0
         _tuple1 = nil
         @space.read [1,2] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         _tuple2 = nil
         @space.read [1,"a"] do |tuple|
-          _tuple2 = tuple
+          _tuple2 = tuple.data
         end
         _tuple3 = nil
         @space.read [1,2,3] do |tuple|
-          _tuple3 = tuple
+          _tuple3 = tuple.data
         end
         @space.write [1,2,3]
-        assert_equal _tuple1.data, [1,2,3]
+        assert_equal _tuple1, [1,2,3]
         assert_equal _tuple2, nil
-        assert_equal _tuple3.data, [1,2,3]
+        assert_equal _tuple3, [1,2,3]
         assert_equal @space.read([1]).data, [1,2,3]
         assert_equal @space.size, 1
         @space.write [1,2,4]
-        assert_equal _tuple1.data, [1,2,3]
+        assert_equal _tuple1, [1,2,3]
         assert_equal @space.size, 2
       end
 
@@ -82,28 +82,28 @@ module Linda
         assert_equal @space.size, 0
         _tuple1 = nil
         @space.take [1,2] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         _tuple2 = nil
         @space.take [1,"a"] do |tuple|
-          _tuple2 = tuple
+          _tuple2 = tuple.data
         end
         _tuple3 = nil
         @space.read [1,2,3] do |tuple|
-          _tuple3 = tuple
+          _tuple3 = tuple.data
         end
         _tuple4 = nil
         @space.take [1,2,3] do |tuple|
-          _tuple4 = tuple
+          _tuple4 = tuple.data
         end
         1.upto(3) do |i|
           @space.write [1,2,3,"a"*i]
         end
         assert_equal @space.size, 1
-        assert_equal _tuple1.data, [1,2,3,"a"]
+        assert_equal _tuple1, [1,2,3,"a"]
         assert_equal _tuple2, nil
-        assert_equal _tuple3.data, [1,2,3,"aa"]
-        assert_equal _tuple4.data, [1,2,3,"aa"]
+        assert_equal _tuple3, [1,2,3,"aa"]
+        assert_equal _tuple4, [1,2,3,"aa"]
         assert_equal @space.take([1]).data, [1,2,3,"aaa"]
         assert_equal @space.size, 0
       end
@@ -112,20 +112,20 @@ module Linda
         assert_equal @space.size, 0
         _tuple1 = nil
         @space.take [1] do |tuple|
-          _tuple1 = tuple
+          _tuple1 = tuple.data
         end
         results = []
         @space.watch [1,2] do |tuple|
-          results << tuple
+          results << tuple.data
         end
         @space.write [1,2,3]
         @space.write [1,2,"aa"]
         @space.write [1,"a",3]
-        assert_equal _tuple1.data, [1,2,3]
+        assert_equal _tuple1, [1,2,3]
         assert_equal @space.size, 2
         assert_equal results.size, 2
-        assert_equal results[0].data, [1,2,3]
-        assert_equal results[1].data, [1,2,"aa"]
+        assert_equal results[0], [1,2,3]
+        assert_equal results[1], [1,2,"aa"]
       end
 
       def test_tuple_expire
