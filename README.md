@@ -98,6 +98,11 @@ Tuple/TupleSpace Functions
 - callback Tuples which matches when TupleSpace#write(tuple) is called.
 
 
+### TupleSpace#cancel(callback_id)
+
+- remove read/take/watch callback by Callback-ID.
+
+
 Test your Linda implementation
 ------------------------------
 
