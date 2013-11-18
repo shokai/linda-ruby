@@ -103,6 +103,11 @@ Tuple/TupleSpace Functions
 - remove read/take/watch callback by Callback-ID.
 
 
+### TupleSpace#list(tuple)
+
+- return list(Array) of Tuples they matches in TupleSpace. return empty Array `[]` if not matches.
+
+
 Test your Linda implementation
 ------------------------------
 
