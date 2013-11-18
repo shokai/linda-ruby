@@ -196,6 +196,19 @@ module Linda
         assert callback_id1 != callback_id2
       end
 
+      def test_list
+        _tuple1 = ["a", "b", "c"]
+        _tuple2 = ["a", "b"]
+        _tuple3 = ["a", "b", "c", 123]
+        @space.write _tuple1
+        @space.write _tuple2
+        @space.write _tuple3
+        _result1 = @space.list ["a", "b", "c"]
+        _result2 = @space.list ["a", "b"]
+        assert_equal _result1.map{|i|i.data}, [_tuple3, _tuple1]
+        assert_equal _result2.map{|i|i.data}, [_tuple3, _tuple2, _tuple1]
+      end
+
     end
   end
 end
