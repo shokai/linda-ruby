@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    linda (0.0.4)
+    linda (0.1.0)
       json
 
 GEM

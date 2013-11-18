@@ -1,3 +1,7 @@
+=== 0.1.0 2013-11-19
+
+* TupleSpace#list to get list of Tuples
+
 === 0.0.4 2013-05-31
 
 * TupleSpace#cancel for remove read/take/watch callback
