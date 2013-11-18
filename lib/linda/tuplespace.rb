@@ -104,6 +104,13 @@ module Linda
       callback
     end
 
+    def list(tuple)
+      tuple = Tuple.new tuple unless kind_of? Tuple
+      @tuples.select do |t|
+        tuple.match? t
+      end
+    end
+
     def check_expire
       expires = []
       self.each do |tuple|
